@@ -1,0 +1,4 @@
+.dynamodb
+.webpack
+node_modules
+tx-init.js
