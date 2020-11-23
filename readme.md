@@ -6,7 +6,8 @@
 ## Summary
 This project contains the basic skeleton for a simple local serverless service. This environment contains an API endpoint, a dynamodb table, and a seed. The example endpoint scans the table for transactions and returns as many as it can. DynamoDB has a 1MB limit on the amount of data it will retrieve in a single request.
 
-The goal is to create an endpoint to enable pagination on the transactions in the table such that a Client could specify the `size` of the transctions to retrieve, and the `page` (or other identifier). The transactions **must** be sorted by time with the most recently created as the first transaction.   
+The goal is to create an endpoint to fetch transactions of specific `currency` on a certain `country`. Make sure pagination is supported such that a Client could specify the `size` of the transctions to retrieve, and the `page` (or other identifier). The transactions **must** be sorted by time with the most recently created as the first transaction.   
+
 
 ## Data
 Supplied is a pre-generated list of transactions that will be seeded upon database start (`txs.json`). The generation script (`tx-init.js`) is also included and can be modified to include **extra** data if neccessary to achieve results.  
@@ -36,7 +37,7 @@ Supplied is a pre-generated list of transactions that will be seeded upon databa
 ## Problem
 DynamoDb actions limit to 1mb of data per call. This table has 30,000 transactions and can only retrieve ~5,286 of them. 
 
-The API Endpoint **must** accept the size limit of the # of transactions to retrieve per page, and some identifier, whether it be a page number or unique key, to be able to traverse forwards and backwards in the results in order. 
+The API Endpoint **must** accept country code, currency, the size limit of the # of transactions to retrieve per page, and some identifier, whether it be a page number or unique key, to be able to traverse forwards and backwards in the results in orde. 
 
 
 ## Notes
