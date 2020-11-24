@@ -8,13 +8,17 @@ function genTxs(num) {
 } 
 
 function genTx(id) {
+    let countries = ["US", "NG", "SA", "BW", "GH"]
+    let currencies = ["ETH", "BTC", "LTC", "USDT"]
+    let seed = Math.random()
+
     return {
         id: String(id), 
         amount: faker.finance.amount(),
-        country: faker.address.countryCode(),
+        country: countries[Math.floor(seed*countries.length)],
         createdAt: Date.now(),
         updatedAt: Date.now(),
-        currency: faker.finance.currencyCode(),
+        currency: currencies[Math.floor(seed*currencies.length)],
         bitcoinAddress: faker.finance.bitcoinAddress(),
         customerName: faker.name.findName(),
         customerEmail: faker.internet.email(),
