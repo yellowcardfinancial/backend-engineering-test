@@ -11,6 +11,22 @@ The goal is to create an endpoint to fetch transactions of specific `currency` o
 
 ## Data
 Supplied is a pre-generated list of transactions that will be seeded upon database start (`txs.json`). The generation script (`tx-init.js`) is also included and can be modified to include **extra** data if neccessary to achieve results.  
+
+Example transaction feature `currency` and `country`
+```
+{
+    "id":"0",
+    "amount":793.93,
+    "country":"BW",
+    "createdAt":1606186591726,
+    "updatedAt":1606186591726,
+    "currency":"USDT",
+    "bitcoinAddress":"19xiZnXJexGgC6R1Tp9M8L7P8MsRhCE5",
+    "customerName":"Jenny Kunze",
+    "customerEmail":"Lavonne.Oberbrunner@yahoo.com",
+    "customerId":"Kayla_Hilll"
+}
+```
 #
 
 ## Setup
@@ -37,11 +53,13 @@ Supplied is a pre-generated list of transactions that will be seeded upon databa
 ## Problem
 DynamoDb actions limit to 1mb of data per call. This table has 30,000 transactions and can only retrieve ~5,286 of them. 
 
-The API Endpoint **must** accept country code, currency, the size limit of the # of transactions to retrieve per page, and some identifier, whether it be a page number or unique key, to be able to traverse forwards and backwards in the results in orde. 
+The API Endpoint **must** accept country code, currency, the size limit of the # of transactions to retrieve per page, and some identifier, whether it be a page number or unique key, to be able to traverse forwards and backwards in the results in order. 
 
 
 ## Notes
 Remember, the end result is an API that is setup for a transaction history page on a UI. There is far from a single solution. This problem is open-ended such that attributes can be added to the generated data, indexes can be added on the resource configuration in `serverless.yml`, etc. 
+
+Performance and elegance is important. `Scans do not have to be used. `
 
 ## Review
 We've set this project up in a way that allows for a simple review process from start to finish.
