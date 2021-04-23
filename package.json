@@ -3,7 +3,7 @@
   "description": "",
   "version": "0.1.0",
   "dependencies": {
-    "faker": "^5.1.0"
+    "faker": "^5.5.2"
   },
   "devDependencies": {
     "serverless": "^2.12.0",
